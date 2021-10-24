@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <!--引入Echart文件-->
+    <script src='echarts.js'></script>
+</head>
+
+<body>
+    <!-- echarts需要一个DOM作为一个载体 -->
+    <div id="main" style="width:1000px;height:600px;"></div>
+</body>
+<script type="text/javascript">
+    // 初始化echarts的相关实例
+    var myChart = echarts.init(document.getElementById('main'));
+    // 配置图表的基本信息
+    var option = {
+        title: {
+            text: '济南 vs 青岛',
+            subtext: '各行业数据分析对比'
+        },
+        tooltip: {
+            trigger: 'axis'
+        },
+        legend: {
+            x: 'center',
+            data: ['济南', '青岛']
+        },
+        toolbox: {
+            show: true,
+            feature: {
+                mark: { show: true },
+                dataView: { show: true, readOnly: false },
+                restore: { show: true },
+                saveAsImage: { show: true }
+            }
+        },
+        calculable: true,
+        polar: [
+            {
+                indicator: [
+                    { text: '大数据', max: 100 },
+                    { text: 'java', max: 100 },
+                    { text: 'python', max: 100 },
+                    { text: '人工智能', max: 100 },
+                    { text: '算法', max: 100 }
+                ],
+                radius: 130
+            }
+        ],
+        series: [
+            {
+                name: '各行业数据分析对比',
+                type: 'radar',
+                itemStyle: {
+                    normal: {
+                        areaStyle: {
+                            type: 'default'
+                        }
+                    }
+                },
+                data: [
+                    {
+                        value: [97, 42, 88, 94, 90],
+                        name: '济南'
+                    },
+                    {
+                        value: [97, 32, 74, 95, 88],
+                        name: '青岛'
+                    }
+                ]
+            }
+        ]
+    };
+    // 利用刚才的配置项进行数据的显示
+    myChart.setOption(option);
+</script>
+
+</html>
